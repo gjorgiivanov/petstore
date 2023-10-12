@@ -1,0 +1,11 @@
+version: "3"
+services:
+  db:
+    image: "postgres"
+    container_name: "petstore_db"
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=petstore
+    ports:
+      - "5000:5432"

@@ -1,0 +1,66 @@
+type Query {
+    users: [UserDTO]
+    pets: [PetDTO]
+}
+
+type Mutation {
+    createUsers(userCreationDTOs: [UserCreationDTO]): [UserDTO]
+    createPets(petCreationDTOs: [PetCreationDTO]): [PetDTO]
+    buy: [BuyHistoryLogDTO]
+}
+
+type UserDTO {
+    firstName: String!
+    lastName: String!
+    emailAddress: String!
+    budget: Money!
+}
+input UserCreationDTO{
+    firstName: String!
+    lastName: String!
+    emailAddress: String!
+    budget: MoneyInput!
+}
+
+type BuyHistoryLogDTO {
+    dateOfExecution: String!
+    numberOfSuccessfulBuyers: Int!
+    numberOfUnsuccessfulBuyers: Int!
+}
+
+type PetDTO {
+    name: String!
+    type: Type!
+    description: String
+    dateOfBirth: String!
+    rating: Int
+    price: Money!
+    owner: UserDTO
+}
+input PetCreationDTO {
+    name: String!
+    type: Type!
+    description: String
+    dateOfBirth: String!
+    rating: Int
+}
+
+type Money {
+    amount: Float!
+    currency: Currency!
+}
+input MoneyInput {
+    amount: Float!
+    currency: Currency!
+}
+
+enum Type{
+    DOG,
+    CAT
+}
+
+enum Currency {
+    USD,
+    EUR,
+    MKD
+}
